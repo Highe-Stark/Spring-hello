@@ -2,11 +2,32 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--Interceptor object-->
+    <bean id="methodBeforeAdviceImpl" class="com.stark.hello.MethodBeforeAdviceImpl">
+    </bean>
 
-    <bean id="daoImpl" class="com.stark.hello.DaoImpl" />
+    <!--Configure Interceptor Object with spring component-->
+    <bean id="theAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+        <property name="advice">
+            <ref bean="methodBeforeAdviceImpl" />  <!-- Interceptor Object -->
+            <!-- ref local="methodBeforeAdviceImpl /-->
+        </property>
+        <property name="mappedName" value="*"></property> <!-- intercept all method -->
+    </bean>
+
+    <bean id="dao" class="com.stark.hello.DaoImpl" />
     <!--DAO Object -->
-    <bean id="service" class="com.stark.hello.ServiceImpl"><!--Service Object-->
-        <property name="dao" ref="daoImpl"></property><!--set DAO properties-->
+    <bean id="serviceImpl" class="com.stark.hello.ServiceImpl"><!--Service Object-->
+        <property name="dao" ref="dao"></property><!--set DAO properties-->
+    </bean>
+
+    <bean id="service"
+          class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="interceptorNames" value="theAdvisor"></property>
+        <!-- Interceptor -->
+        <property name="target">  <!-- object intercepted -->
+            <ref bean="serviceImpl"/>
+        </property>
     </bean>
 </beans>
 

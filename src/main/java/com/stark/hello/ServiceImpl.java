@@ -1,0 +1,17 @@
+package com.stark.hello;
+
+public class ServiceImpl {
+    private IDao dao;
+
+    public void service(String name) {
+        System.out.println(dao.sayHello(name));
+    }
+
+    public IDao getDao() {
+        return dao;
+    }
+
+    public void setDao(IDao dao) {
+        this.dao = dao;
+    }
+}

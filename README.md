@@ -6,6 +6,9 @@ Introduction into Spring.
 
 Following tutorial of __《Java Web整合开发 王者归来》__
 
+##### v0.5
+Intercept method with interceptor implementation
+
 ##### v0.2
 AOP interface implementation.  
 Interceptor implementation.

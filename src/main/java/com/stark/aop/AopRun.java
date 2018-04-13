@@ -15,7 +15,7 @@ public class AopRun {
          *     |- target
          *         |- class name
          */
-        AopServiceImpl hello = (AopServiceImpl) context.getBean("aopService");
+        IAopService hello = (IAopService) context.getBean("aopService");
 
         hello.withAop();
         hello.withoutAop();

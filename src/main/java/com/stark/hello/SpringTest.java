@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class SpringTest {
     public static void main(String[] args) {
         ApplicationContext factory = new ClassPathXmlApplicationContext("applicationContext.xml");
-        ServiceImpl hello = (ServiceImpl) factory.getBean("service");
+        IService hello = (IService) factory.getBean("service");
 
         hello.service("Pepper Potts");
     }

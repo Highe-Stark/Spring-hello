@@ -1,6 +1,6 @@
 package com.stark.hello;
 
-public class ServiceImpl {
+public class ServiceImpl implements IService{
     private IDao dao;
 
     public void service(String name) {

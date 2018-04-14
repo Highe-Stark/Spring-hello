@@ -44,6 +44,22 @@
         </property>
     </bean>
 
+    <!--
+    <bean id="setterAndAbsquatulateAdvisor"
+        class="org.springframework.aop.support.RegexMethodPointcutAdvisor">
+        // pointcut
+        <property name="interceptor">   // interceptor
+            <ref bean="beanNameOfAopAllianceInterceptor"/>
+        </property>
+        <property name="patterns">    // regex expression configuration pointcut
+            <list>
+                <value>.*get.*</value>
+                <value>.*absquatulate</value>
+            </list>
+        </property>
+    </bean>
+    -->
+
     <!--Interceptor object-->
     <bean id="methodBeforeAdviceImpl" class="com.stark.hello.MethodBeforeAdviceImpl">
     </bean>

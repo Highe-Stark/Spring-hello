@@ -6,6 +6,12 @@ Introduction into Spring.
 
 Following tutorial of __《Java Web整合开发 王者归来》__
 
+##### v0.9
+Implement transaction.
+###### Problem encountered
+UpdateCreditRating.java: `Integer(int) is deprecated`, replace with static factory function `Integer.valueOf(int)`
+
+
 ##### v0.8
 Implement DAO modules with JDBC to connect the database
 ###### Problem encountered
@@ -19,6 +25,7 @@ applicationContext-Person.xml: `com.mysql.jdbc.Driver` is out of date.
    
 If connecting without a certification, specifying `useSSL=false`.  
 `&` is a predefined entity ( special character ) among 5 in HTML/XML, use `&amp;` instead.
+
 
 ##### v0.5.1
 If an interface is implemented by some classes, the interface can be instantiated. 

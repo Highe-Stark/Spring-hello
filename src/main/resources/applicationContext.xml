@@ -39,7 +39,7 @@
         </property>
         <property name="target">
             <bean class="com.stark.aop.AopServiceImpl">
-                <property name="name" value="Tomcat"></property>
+                <property name="name" value=""></property>
             </bean>
         </property>
     </bean>

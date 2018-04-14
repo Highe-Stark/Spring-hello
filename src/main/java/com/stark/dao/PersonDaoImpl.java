@@ -54,4 +54,34 @@ public class PersonDaoImpl extends JdbcDaoSupport implements IPersonDao {
         String sql = " select count(*) from tb_person ";
         return (int) getJdbcTemplate().queryForObject(sql, Integer.class);
     }
+
+    // rewrite List method
+    public List findAllPersons() {
+        PersonMappingQuery personQuery = new PersonMappingQuery();   // encapsulate the query
+        personQuery.setDataSource(getDataSource());
+        personQuery.setSql(" select * from tb_person ");   // set SQL
+        /*
+         * set parameters via declareParameter(...) function
+         * * example
+         * * private class CustomerMappingQuery extends MappingSqlQuery {
+         * *
+         * * public CustomerMappingQuery(DataSource ds) {
+         * *             super(ds, "SELECT id, name FROM customer WHERE id = ?");
+         * *         super.declareParameter(new SqlParameter("id", Types.INTEGER));
+         * *         compile();
+         * *     }
+         * *
+         * *     public Object mapRow(ResultSet rs, int rowNumber) throws SQLException {
+         * *         Customer cust = new Customer();
+         * *         cust.setId((Integer) rs.getObject("id"));
+         * *         cust.setName(rs.getString("name"));
+         * *         return cust;
+         * *     }
+         * * }
+         */
+        // personQuery.declareParameter(new SqlParameter (java.sql.Types.NUMERIC));
+        personQuery.compile();
+
+        return personQuery.execute(new Object[] {});
+    }
 }

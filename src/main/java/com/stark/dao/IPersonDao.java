@@ -7,4 +7,5 @@ public interface IPersonDao {
     public void addPerson(Person person);
     public int getPersonsCount();
     public List<Person> listPersons();
+    public List findAllPersons();
 }
